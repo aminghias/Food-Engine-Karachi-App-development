@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+    <style>
+        table, th, td, h1, form,img {
+          border: 1px solid black;
+          border-collapse: collapse;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+          background-color:rgb(85, 182, 199);
+
+        }
+    </style>
+    <body>
+
+        <h1 style="background-color:DodgerBlue;">
+            FOOD ENGINE KARACHI
+        </h1>
+       
+        <img src="/static/colorful-restaurant-wall-typography-vector-food-bbq-background-motivational-cafe-menu-lettering-chalkboard-166187073.jpg" alt="Food"
+        width="1500" height="350">
+    
+
+
+      
+        <form action = {{ url_for ('submitform')}} id='form1' method="post">
+            <p> Enter food type 
+                <input type = "text" name = "food_type" /> 
+            </p>
+            <p> Enter location 
+                <input type = "text" name = "location" /> 
+            </p>
+            <p> Enter city name 
+                <input type = "text" name = "city" /> 
+            </p>
+           
+            <p>
+                <input type = "submit" value = "submit" />
+            </p>
+            
+        </form>
+    </body>
+
+</html>

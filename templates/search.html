@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <style>
+        li {
+          border: 1px solid black;
+          border-collapse: collapse;
+
+        }
+        body {
+          background: #ccc;
+          font-family: 'Roboto', sans-serif;
+          border: 1px solid black;
+          border-collapse: collapse;
+                
+      }
+      .mytabs {
+          display: flex;
+          flex-wrap: wrap;
+          max-width: 1000px;
+          margin: 50px auto;
+          padding: 25px;
+      }
+      .mytabs input[type="radio"] {
+          display: none;
+      }
+      .mytabs label {
+          padding: 25px;
+          background: #e2e2e2;
+          font-weight: bold;
+      }
+      
+      .mytabs .tab {
+          width: 100%;
+          padding: 20px;
+          background: #fff;
+          order: 1;
+          display: none;
+      }
+      .mytabs .tab h2 {
+          font-size: 3em;
+      }
+      
+      .mytabs input[type='radio']:checked + label + .tab {
+          display: block;
+      }
+      
+      .mytabs input[type="radio"]:checked + label {
+          background: #fff;
+      }
+    </style>
+
+
+<body>
+
+    <form action = {{ url_for ('submitform1')}} id='form2' method="post">
+        <label>Search</label>   
+        <input type = "text" name= "search" value="food" />
+        <input type = "submit" name= "searchsubmit" />  
+    </form> 
+
+
+
+
+  <div class="mytabs">
+    <input type="radio" id="tabfree" name="mytabs" checked="checked">
+    <label for="tabfree">Descriptive</label>
+    <div class="tab">
+      <h2>Descriptive Search Results </h2>
+      <ul>
+        {% for i in range(0,b['Name']|length) %}
+            <li>
+                <img src="{{b['image'][i]}}"" al='food image' width=300 height=150 align='right'> 
+                <h2>{{b['Name'][i]}}</h2>
+               
+                <p><b> Details:</b>{{b['description'][i]}}</p>
+                
+                <a href={{b['url'][i]}} target="_blank">Read More: {{b['url'][i]}} </a>
+
+            </li>
+        {% endfor %}
+     </u1>
+      
+    </div>
+
+    <input type="radio" id="tabsilver" name="mytabs">
+    <label for="tabsilver">Rated</label>
+    <div class="tab">
+      <h2>Rated Search Results</h2>
+      {% for i in range(0,c['Name']|length) %}
+            <li width=800 height=500>
+                <img src="{{c['image'][i]}}"" al='food image' width=300 height=150 align='right'>
+                <h2>{{c['Name'][i]}}</h2> 
+                
+                <p><b> Reviews:</b>{{c['comments'][i]}}</p>
+                <p> <strong> Rating: {{c['ratings'][i]}} out of 10</strong> </p>
+                
+                <a href={{c['url'][i]}} target="_blank">Read More: {{c['url'][i]}} </a>
+
+            </li>
+        {% endfor %}
+
+    </div>
+
+  </div>
+</body>
+</html>
